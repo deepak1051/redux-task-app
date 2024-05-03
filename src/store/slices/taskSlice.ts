@@ -7,6 +7,7 @@ interface Task {
   id: string;
   title: string;
   completed: boolean;
+  priority: string;
 }
 
 interface TaskState {

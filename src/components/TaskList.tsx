@@ -30,8 +30,8 @@ export default function TaskList() {
           onClick={() => setStatus('All')}
           className={`border p-2 rounded font-semibold   ${
             status === 'All'
-              ? 'bg-teal-400 text-white'
-              : 'border-teal-400 text-teal-400'
+              ? 'bg-[#0fa4af] text-white'
+              : 'border-[#0fa4af] text-[#0fa4af]'
           }`}
         >
           All Tasks
@@ -40,8 +40,8 @@ export default function TaskList() {
           onClick={() => setStatus('Completed')}
           className={`border p-2 rounded font-semibold   ${
             status === 'Completed'
-              ? 'bg-teal-400 text-white'
-              : 'border-teal-400 text-teal-400'
+              ? 'bg-[#0fa4af] text-white'
+              : 'border-[#0fa4af] text-[#0fa4af]'
           }`}
         >
           Completed
@@ -50,8 +50,8 @@ export default function TaskList() {
           onClick={() => setStatus('Pending')}
           className={`border p-2 rounded font-semibold   ${
             status === 'Pending'
-              ? 'bg-teal-400 text-white'
-              : 'border-teal-400 text-teal-400'
+              ? 'bg-[#0fa4af] text-white'
+              : 'border-[#0fa4af] text-[#0fa4af]'
           }`}
         >
           Pending
@@ -62,7 +62,7 @@ export default function TaskList() {
         {filteredTasks?.map((task) => (
           <div
             key={task.id}
-            className="relative flex items-center gap-2 bg-slate-400 px-2 py-6 text-white rounded cursor-pointer"
+            className="relative flex items-center gap-2 bg-[#08444a] px-2 py-6 text-white rounded cursor-pointer"
           >
             <input
               className="w-4 h-4 cursor-pointer"
@@ -75,9 +75,14 @@ export default function TaskList() {
             <h2 className={`text-lg ${task.completed ? 'line-through' : ''}`}>
               {task.title}
             </h2>
+
+            <span className="absolute right-12 text-sm border p-1 rounded  border-[#afdde5] text-[#afdde5]">
+              {task.priority}
+            </span>
+
             <button
               onClick={() => dispatch(removeTask(task))}
-              className="absolute right-4 text-xl text-red-900"
+              className="absolute right-4 text-xl text-[#DC143C]"
             >
               <MdDelete />
             </button>
