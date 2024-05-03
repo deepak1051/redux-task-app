@@ -1,16 +1,28 @@
-import TaskInput from './components/TaskInput';
-import TaskList from './components/TaskList';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+
+import { useAppSelector } from './store';
 
 function App() {
-  return (
-    <div className="container mx-auto px-6">
-      <h2 className="bg-[#003135] py-4 text-center text-2xl text-white mt-4 rounded">
-        Todo App
-      </h2>
+  const { isLoggedIn } = useAppSelector((state) => state.auth);
 
-      <TaskInput />
-      <TaskList />
-    </div>
+  console.log(isLoggedIn);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+          path="/"
+        />
+        <Route
+          element={!isLoggedIn ? <Login /> : <Navigate to="/" />}
+          path="/login"
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
